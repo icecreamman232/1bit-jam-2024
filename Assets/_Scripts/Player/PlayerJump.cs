@@ -16,6 +16,7 @@ public class PlayerJump : MonoBehaviour
 
     private float m_jumpTimer;
     private float m_airTimer;
+    private Coroutine m_jumpCoroutine;
 
     private void Update()
     {
@@ -36,6 +37,15 @@ public class PlayerJump : MonoBehaviour
     {
         if (m_jumpTimer == 0) return;
         var pos = transform.position;
+
+        if (pos.y < m_groundY)
+        {
+            pos.y = m_groundY;
+            m_jumpTimer = 0;
+            StopCoroutine(m_jumpCoroutine);
+            return;
+        }
+        
         var t = MathHelpers.Remap(m_jumpTimer, 0, m_jumpDuration / 2, 0, 1);
         pos.y = Mathf.Lerp(m_groundY, m_jumpHeight + m_groundY, t);
             
@@ -44,7 +54,7 @@ public class PlayerJump : MonoBehaviour
     
     private void Jump()
     {
-        StartCoroutine(OnJumping());
+        m_jumpCoroutine = StartCoroutine(OnJumping());
         UpdateAnimator();
     }
     
@@ -76,5 +86,10 @@ public class PlayerJump : MonoBehaviour
     private void UpdateAnimator()
     {
         m_animator.SetBool("Jumping",m_jumpTimer != 0);
+    }
+
+    public void SetGround(float groundY)
+    {
+        m_groundY = groundY;
     }
 }
