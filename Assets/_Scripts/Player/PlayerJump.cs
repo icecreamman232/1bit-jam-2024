@@ -1,95 +1,41 @@
-using System.Collections;
-using SGGames.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    [Header("Jump")]
-    [SerializeField] private float m_jumpDuration;
-    [SerializeField] private float m_groundY;
-    [SerializeField] private float m_jumpPowerUp;
-    [SerializeField] private float m_jumpPowerDown;
     [SerializeField] private float m_jumpHeight;
-    [SerializeField] private float m_airTime;
-    [Header("Animation")]
-    [SerializeField] private Animator m_animator;
+    [SerializeField] private float m_timeToJumpPeak;
+    [SerializeField] private float m_jumpVelocity;
 
-    private float m_jumpTimer;
-    private float m_airTimer;
-    private Coroutine m_jumpCoroutine;
+    private Controller2D m_controller2D;
+    private Animator m_animator;
+
+    private int m_jumpAnimParam = Animator.StringToHash("Jumping");
+    
+    private void Start()
+    {
+        m_animator = GetComponentInChildren<Animator>();
+        m_controller2D = GetComponent<Controller2D>();
+        ComputeJumpParams();
+    }
 
     private void Update()
     {
-        HandleInput();
-        UpdateMovement();
+        if (Input.GetKeyDown(KeyCode.Space) && m_controller2D.CollisionInfos.CollideBelow)
+        {
+            m_controller2D.SetVerticalVelocity(m_jumpVelocity);
+        }
+
         UpdateAnimator();
     }
 
-    private void HandleInput()
+    private void ComputeJumpParams()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && m_jumpTimer == 0)
-        {
-            Jump();
-        }
+        m_timeToJumpPeak = Mathf.Sqrt(2 * m_jumpHeight / Mathf.Abs(m_controller2D.Gravity));
+        m_jumpVelocity = Mathf.Abs(m_controller2D.Gravity) * m_timeToJumpPeak;
     }
-    
-    private void UpdateMovement()
-    {
-        if (m_jumpTimer == 0) return;
-        var pos = transform.position;
 
-        if (pos.y < m_groundY)
-        {
-            pos.y = m_groundY;
-            m_jumpTimer = 0;
-            StopCoroutine(m_jumpCoroutine);
-            return;
-        }
-        
-        var t = MathHelpers.Remap(m_jumpTimer, 0, m_jumpDuration / 2, 0, 1);
-        pos.y = Mathf.Lerp(m_groundY, m_jumpHeight + m_groundY, t);
-            
-        transform.position = pos;
-    }
-    
-    private void Jump()
-    {
-        m_jumpCoroutine = StartCoroutine(OnJumping());
-        UpdateAnimator();
-    }
-    
-    private IEnumerator OnJumping()
-    {
-        while (m_jumpTimer < m_jumpDuration/2)
-        {
-            m_jumpTimer += Time.deltaTime * m_jumpPowerUp;
-            yield return null;
-        }
-
-        while (m_airTimer < m_airTime)
-        {
-            m_airTimer += Time.deltaTime;
-            yield return null;
-        }
-
-        m_airTimer = 0;
-
-        while (m_jumpTimer > 0)
-        {
-            m_jumpTimer -= Time.deltaTime * m_jumpPowerDown;
-            yield return null;
-        }
-
-        m_jumpTimer = 0;
-    }
-    
     private void UpdateAnimator()
     {
-        m_animator.SetBool("Jumping",m_jumpTimer != 0);
-    }
-
-    public void SetGround(float groundY)
-    {
-        m_groundY = groundY;
+        m_animator.SetBool(m_jumpAnimParam,m_controller2D.Velocity.y != 0);
     }
 }
