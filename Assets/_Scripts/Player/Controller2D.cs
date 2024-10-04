@@ -53,7 +53,7 @@ public class Controller2D : MonoBehaviour
         //m_velocity += m_externalForce;
         m_velocity.y += m_gravity * Time.deltaTime;
         Move(m_velocity * Time.deltaTime);
-        if (m_collisionInfo.CollideBelow)
+        if (m_collisionInfo.CollideBelow || m_collisionInfo.CollideAbove)
         {
             m_velocity.y = 0;
         }
