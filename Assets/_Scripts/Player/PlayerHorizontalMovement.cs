@@ -1,9 +1,11 @@
+using SGGames.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerHorizontalMovement : MonoBehaviour
 {
     [SerializeField] private float m_moveSpeed;
-
+    [SerializeField] private CameraFollowing m_cameraFollowing;
+    
     private readonly int m_runningAnimParam = Animator.StringToHash("Running");
     
     private Animator m_animator;
@@ -45,6 +47,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
     private void Flip(bool isFlip)
     {
         m_spriteRenderer.flipX = isFlip;
+        m_cameraFollowing.Flip(isFlip);
     }
 
     private void UpdateAnimator()
