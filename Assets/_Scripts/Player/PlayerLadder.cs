@@ -5,7 +5,8 @@ public class PlayerLadder : MonoBehaviour
 {
     [SerializeField] private CameraFollowing m_cameraFollowing;
     [SerializeField] private float m_climbingVelocity;
-    [SerializeField] private Animator m_animator;
+    
+    private Animator m_animator;
     private Controller2D m_controller2D;
     private Ladder m_currentLadder;
     private bool m_isEnterFromBot;
