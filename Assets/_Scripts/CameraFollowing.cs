@@ -57,6 +57,11 @@ namespace SGGames.Scripts.Managers
             m_flipValue = isFlip ? -1 : 1;
         }
 
+        public void ResetSmoothValue()
+        {
+            m_cameraSmoothVelocity = Vector3.zero;
+        }
+
         public void ResetCamera()
         {
             m_cameraTransform.position = new Vector3(0, 0, -10);

@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e588491ba628de4db7735961155e545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cameraFollowing: {fileID: 519420034}
   m_climbingVelocity: 3
   m_animator: {fileID: 0}
 --- !u!50 &185238260

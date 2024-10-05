@@ -1,7 +1,9 @@
+using SGGames.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerLadder : MonoBehaviour
 {
+    [SerializeField] private CameraFollowing m_cameraFollowing;
     [SerializeField] private float m_climbingVelocity;
     [SerializeField] private Animator m_animator;
     private Controller2D m_controller2D;
@@ -68,6 +70,7 @@ public class PlayerLadder : MonoBehaviour
                 transform.position = m_controller2D.Velocity.x < 0
                     ? m_currentLadder.LeftPoint.position
                     : m_currentLadder.RightPoint.position;
+                m_cameraFollowing.ResetSmoothValue();
                 //Player is near the top
                 DetachFromLadder();
             }
