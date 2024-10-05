@@ -5,11 +5,13 @@ public class Controller2D : MonoBehaviour
 {
     private const float m_skinWidth = .015f;
     [SerializeField] private float m_gravity;
+    [SerializeField] private bool m_gravityActive;
     [SerializeField] private Vector2 m_velocity;
     [SerializeField] private float m_horizontalRayCount;
     [SerializeField] private float m_verticalRayCount;
     [SerializeField] private LayerMask m_obstacleMask;
-    
+
+    private bool m_isClimbing;
     private float m_horizontalRaySpacing;
     private float m_verticalRaySpacing;
     
@@ -38,22 +40,33 @@ public class Controller2D : MonoBehaviour
     private BoxCollider2D m_collider2D;
 
     public float Gravity => m_gravity;
-    public CollisionInfo CollisionInfos => m_collisionInfo;
 
+    public bool IsGravityActive => m_gravityActive;
+    public CollisionInfo CollisionInfos => m_collisionInfo;
+    
     public Vector2 Velocity => m_velocity;
 
     private void Start()
     {
         m_collider2D = GetComponent<BoxCollider2D>();
+        SetGravityActive(true);
         CalculateRaySpacing();
     }
 
     private void Update()
     {
-        //m_velocity += m_externalForce;
-        m_velocity.y += m_gravity * Time.deltaTime;
+        if (m_gravityActive)
+        {
+            m_velocity.y += m_gravity * Time.deltaTime;
+        }
+        
         Move(m_velocity * Time.deltaTime);
-        if (m_collisionInfo.CollideBelow || m_collisionInfo.CollideAbove)
+        if (m_gravityActive  && (m_collisionInfo.CollideBelow || m_collisionInfo.CollideAbove))
+        {
+            m_velocity.y = 0;
+        }
+
+        if (m_isClimbing)
         {
             m_velocity.y = 0;
         }
@@ -158,5 +171,20 @@ public class Controller2D : MonoBehaviour
     public void SetVerticalVelocity(float value)
     {
         m_velocity.y = value;
+    }
+
+    public void SetVelocity(Vector2 vec)
+    {
+        m_velocity = vec;
+    }
+
+    public void SetGravityActive(bool isActive)
+    {
+        m_gravityActive = isActive;
+    }
+
+    public void SetClimbing(bool value)
+    {
+        m_isClimbing = value;
     }
 }

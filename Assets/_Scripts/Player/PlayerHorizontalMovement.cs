@@ -13,6 +13,9 @@ public class PlayerHorizontalMovement : MonoBehaviour
     private Controller2D m_controller2D;
     private float m_velocityXSmoothing;
     private Vector2 m_rawInputValue;
+    private bool m_isFlip;
+
+    public bool IsFlip => m_isFlip;
 
     private void Start()
     {
@@ -46,6 +49,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
 
     private void Flip(bool isFlip)
     {
+        m_isFlip = isFlip;
         m_spriteRenderer.flipX = isFlip;
         m_cameraFollowing.Flip(isFlip);
     }
