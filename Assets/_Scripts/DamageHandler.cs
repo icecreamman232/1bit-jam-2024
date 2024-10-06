@@ -1,3 +1,4 @@
+using System;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class DamageHandler : MonoBehaviour
     [SerializeField] protected bool m_isApplyForceOnHit;
     [SerializeField] protected Vector2 m_forceApplyOnHit;
 
+    public Action<GameObject> OnHit;
+    
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (LayerManager.IsInLayerMask(other.gameObject.layer, m_targetMask))
@@ -22,6 +25,7 @@ public class DamageHandler : MonoBehaviour
         var health = target.GetComponent<Health>();
         if (health is PlayerHealth)
         {
+            OnHit?.Invoke(target);
             health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);
             if (m_isApplyForceOnHit)
             {

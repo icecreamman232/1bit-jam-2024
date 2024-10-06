@@ -1,3 +1,4 @@
+using System.Collections;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 
@@ -16,12 +17,13 @@ public class PlayerHorizontalMovement : MonoBehaviour
     private bool m_isFlip;
 
     public bool IsFlip => m_isFlip;
-
+    
     private void Start()
     {
         m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_animator = GetComponentInChildren<Animator>();
         m_controller2D = GetComponent<Controller2D>();
+        m_cameraFollowing.SetCameraPosition(transform.position);
     }
 
     private void Update()
@@ -58,4 +60,19 @@ public class PlayerHorizontalMovement : MonoBehaviour
     {
         m_animator.SetBool(m_runningAnimParam,m_controller2D.Velocity.x != 0);
     }
+
+    private IEnumerator OnStopCameraForDuration(float duration)
+    {
+        m_cameraFollowing.SetPermission(false);
+        yield return new WaitForSeconds(duration);
+        m_cameraFollowing.SetPermission(true);
+        m_cameraFollowing.ResetSmoothValue();
+    }
+    
+    public void StopCameraForDuration(float duration)
+    {
+        StartCoroutine(OnStopCameraForDuration(duration));
+    }
+
+    
 }

@@ -10,6 +10,7 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private float m_aheadDistanceX;
         [SerializeField] private float m_smoothTime;
         private Vector3 m_targetPos;
+        private Vector2 m_lastTargetPos;
         private float m_flipValue = 1;
 
         private bool m_canFollow;

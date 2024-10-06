@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ebe44e8da7462448f7b301369e877c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_collider2D: {fileID: 1141521557898959480}
   m_animator: {fileID: 18492653014147397}
+  m_damageHandler: {fileID: 6639295535882093044}
   m_disappearAnimDuration: 0.45
   m_appearAnimDuration: 0.45
   m_isOpen: 1

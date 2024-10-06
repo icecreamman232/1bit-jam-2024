@@ -1,14 +1,33 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class LaserColumn : MonoBehaviour
 {
+    [SerializeField] private Collider2D m_collider2D;
     [SerializeField] private Animator m_animator;
+    [SerializeField] private DamageHandler m_damageHandler;
     [SerializeField] private float m_disappearAnimDuration;
     [SerializeField] private float m_appearAnimDuration;
     [SerializeField] private bool m_isOpen = true;
 
     private bool m_isProcess;
+
+    private void Start()
+    {
+        m_damageHandler.OnHit += OnHitPlayer;
+    }
+
+    private void OnDestroy()
+    {
+        m_damageHandler.OnHit -= OnHitPlayer;
+    }
+
+    private void OnHitPlayer(GameObject player)
+    {
+        var horizontalMovement = player.GetComponent<PlayerHorizontalMovement>();
+        horizontalMovement.StopCameraForDuration(0.5f);
+    }
 
     [ContextMenu("Turn on")]
     private void TestTurnOn()
@@ -46,6 +65,7 @@ public class LaserColumn : MonoBehaviour
         m_animator.SetTrigger("Appear");
         yield return new WaitForSeconds(m_appearAnimDuration);
         gameObject.layer = LayerMask.NameToLayer("Obstacle");
+        m_collider2D.enabled = true;
         m_isOpen = true;
         m_isProcess = false;
     }
@@ -62,6 +82,7 @@ public class LaserColumn : MonoBehaviour
         m_animator.SetTrigger("Disappear");
         yield return new WaitForSeconds(m_disappearAnimDuration);
         gameObject.layer = LayerMask.NameToLayer("Default");
+        m_collider2D.enabled = false;
         m_isOpen = false;
         m_isProcess = false;
     }
