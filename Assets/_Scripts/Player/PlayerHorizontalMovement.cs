@@ -40,6 +40,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
 
     private void HandleHorizontalMovementOnDead()
     {
+        m_controller2D.SetVelocity(Vector2.zero);
         m_controller2D.SetGravityActive(false);
         m_isAllow = false;
     }
