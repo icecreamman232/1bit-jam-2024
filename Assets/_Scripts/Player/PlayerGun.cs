@@ -10,18 +10,35 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private Transform m_shootPivot;
     [SerializeField] private Vector2 m_aimDirection = Vector2.right;
 
+    private bool m_isAllow;
     private bool m_isDelay;
     private Animator m_animator;
     private PlayerHorizontalMovement m_horizontalMovement;
+    private PlayerHealth m_health;
     private void Start()
     {
+        m_isAllow = true;
+        m_health = GetComponent<PlayerHealth>();
         m_animator = GetComponentInChildren<Animator>();
         m_horizontalMovement = GetComponent<PlayerHorizontalMovement>();
+
+        m_health.OnDeath += HandleGunOnPlayerDead;
+    }
+
+    private void OnDestroy()
+    {
+        m_health.OnDeath -= HandleGunOnPlayerDead;
+    }
+
+    private void HandleGunOnPlayerDead()
+    {
+        m_isAllow = false;
     }
 
     private void Update()
     {
-
+        if (!m_isAllow) return;
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

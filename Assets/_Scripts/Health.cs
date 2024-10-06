@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] protected int m_currentHealth;
 
     protected bool m_isInvulnerable;
+    
+    public Action OnDeath;
 
     protected virtual void Start()
     {
@@ -48,6 +50,7 @@ public class Health : MonoBehaviour
 
     protected virtual void Kill()
     {
+        OnDeath?.Invoke();
         this.gameObject.SetActive(false);
     }
 }

@@ -181,6 +181,7 @@ MonoBehaviour:
   m_currentHealth: 0
   m_godMode: 1
   m_updateHealthBarEvent: {fileID: 11400000, guid: d861b6ad53824ad48bdb3fc4a5b75ec5, type: 2}
+  m_deadAnimDuration: 0.6
 --- !u!114 &2865805245136080421
 MonoBehaviour:
   m_ObjectHideFlags: 0
