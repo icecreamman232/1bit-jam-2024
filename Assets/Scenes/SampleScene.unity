@@ -479,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8188023299500130682, guid: 28f35ab65b151184d82e4984603c0c36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.5
+      value: -2.05
       objectReference: {fileID: 0}
     - target: {fileID: 8188023299500130682, guid: 28f35ab65b151184d82e4984603c0c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 8.73
       objectReference: {fileID: 0}
     - target: {fileID: 8188023299500130682, guid: 28f35ab65b151184d82e4984603c0c36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -570,6 +570,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6109169017468334184}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LaserColumn, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924789625187937580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+      propertyPath: m_ButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6634671267566323580, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
       propertyPath: m_Name
       value: Grid
@@ -579,6 +607,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+--- !u!114 &6109169017468334184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3473617354448531846, guid: 1ee9978355267964694e4b34c39e98bb, type: 3}
+  m_PrefabInstance: {fileID: 6109169017468334183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ebe44e8da7462448f7b301369e877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6429412023593999710
 PrefabInstance:
   m_ObjectHideFlags: 0
