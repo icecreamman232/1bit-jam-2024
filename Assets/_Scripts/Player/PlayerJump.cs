@@ -36,6 +36,6 @@ public class PlayerJump : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        m_animator.SetBool(m_jumpAnimParam,m_controller2D.Velocity.y != 0);
+        m_animator.SetBool(m_jumpAnimParam,m_controller2D.Velocity.y != 0 && m_controller2D.IsGravityActive);
     }
 }
