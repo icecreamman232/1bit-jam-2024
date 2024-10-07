@@ -7,10 +7,26 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private LayerMask m_obstacleMask;
+    [SerializeField] private DamageHandler m_damageHandler;
     
     private Vector2 m_direction;
     private bool m_isAlive;
-    
+
+    private void OnEnable()
+    {
+        m_damageHandler.OnHit += OnHitTarget;
+    }
+
+    private void OnDisable()
+    {
+        m_damageHandler.OnHit -= OnHitTarget;
+    }
+
+    private void OnHitTarget(GameObject target)
+    {
+        SelfDestroy();
+    }
+
     public void Spawn(Vector3 position, Vector2 shootDirection)
     {
         transform.position = position;

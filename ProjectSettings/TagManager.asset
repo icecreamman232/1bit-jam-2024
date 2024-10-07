@@ -16,7 +16,7 @@ TagManager:
   - Obstacle
   - Interact
   - PlayerBullet
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
     locked: 0
   - name: Obstacle
     uniqueID: 2917349715
+    locked: 0
+  - name: Enemy
+    uniqueID: 399007513
     locked: 0
   - name: Player
     uniqueID: 732280933

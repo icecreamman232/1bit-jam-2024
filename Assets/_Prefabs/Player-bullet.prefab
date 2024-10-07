@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 692141166807203106}
   - component: {fileID: 1158172322752623641}
   - component: {fileID: 57001265673281999}
+  - component: {fileID: 5369432312405972548}
   m_Layer: 9
   m_Name: Player-bullet
   m_TagString: Untagged
@@ -96,6 +97,26 @@ MonoBehaviour:
   m_obstacleMask:
     serializedVersion: 2
     m_Bits: 128
+  m_damageHandler: {fileID: 5369432312405972548}
+--- !u!114 &5369432312405972548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4639175125029459530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308e711876d9edb4da63fc21ad04a9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targetMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_damage: 1
+  m_invulnerableTime: 0.3
+  m_isApplyForceOnHit: 0
+  m_forceApplyOnHit: {x: 0, y: 0}
 --- !u!1 &7286573791439083463
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +188,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 732280933
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3300857d9e8989c43889df21f237a809, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -22,17 +22,38 @@ public class DamageHandler : MonoBehaviour
 
     protected virtual void CauseDamage(GameObject target)
     {
-        var health = target.GetComponent<Health>();
-        if (health is PlayerHealth)
+        if (target.layer == LayerMask.NameToLayer("Player"))
         {
-            OnHit?.Invoke(target);
-            health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);
-            if (m_isApplyForceOnHit)
-            {
-                var controller = target.GetComponent<Controller2D>();
-                ApplyForceOnHit(controller);
-            }
+            CauseDamageToPlayer(target);
         }
+        else if (target.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            CauseDamageToEnemy(target);
+        }
+    }
+
+    private void CauseDamageToPlayer(GameObject target)
+    {
+        var health = target.GetComponent<PlayerHealth>();
+        health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);
+        if (m_isApplyForceOnHit)
+        {
+            var controller = target.GetComponent<Controller2D>();
+            ApplyForceOnHit(controller);
+        }
+        OnHit?.Invoke(target);
+    }
+    
+    private void CauseDamageToEnemy(GameObject target)
+    {
+        var health = target.GetComponent<EnemyHealth>();
+        health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);
+        if (m_isApplyForceOnHit)
+        {
+            var controller = target.GetComponent<Controller2D>();
+            ApplyForceOnHit(controller);
+        }
+        OnHit?.Invoke(target);
     }
 
     private void ApplyForceOnHit(Controller2D controller2D)
