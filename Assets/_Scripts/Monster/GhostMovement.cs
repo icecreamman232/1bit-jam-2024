@@ -12,6 +12,7 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private float m_rightPatrolDistance;
 
     [Header("Disappear Behavior")] 
+    [SerializeField] private bool m_allowInvi;
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private float m_fadeTime;
     [SerializeField] private float m_minDelayToInvi;
@@ -42,7 +43,10 @@ public class GhostMovement : MonoBehaviour
     private void Update()
     {
         UpdateMovement();
-        UpdateAppear();
+        if (m_allowInvi)
+        {
+            UpdateAppear();
+        }
     }
 
     private void UpdateMovement()
