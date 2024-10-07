@@ -181,7 +181,7 @@ MonoBehaviour:
   m_currentHealth: 0
   m_godMode: 1
   m_updateHealthBarEvent: {fileID: 11400000, guid: d861b6ad53824ad48bdb3fc4a5b75ec5, type: 2}
-  m_deadAnimDuration: 0.6
+  m_deadAnimDuration: 0.7
 --- !u!114 &2865805245136080421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 732280933
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -964959446, guid: f6469ad0fc48f7b46a478f232d8cbb2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

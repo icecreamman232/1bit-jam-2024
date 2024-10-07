@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bf50f0e90dfcb474b8f8b0167cd52dbb
+guid: 1bb4fba3f1fa3ef49ac320ec491878a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: runner-explode_0
+      name: impact-circle-style-vfx_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,41 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90ff51e5308653c42bd79ebbf5395291
-      internalID: 505841411
+      spriteID: aea7c1a3754a57849865b4c120da16ea
+      internalID: 1217358298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runner-explode_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbfa89992540ab544abf387cc6233436
-      internalID: 788095254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runner-explode_2
+      name: impact-circle-style-vfx_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,41 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d76198a385a177046967eb0e824e6bc7
-      internalID: -98023561
+      spriteID: 86066dbccc11f55468d3d14bb7929a6e
+      internalID: -764849167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runner-explode_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dedda7eb004d4a34d9e5b73911f3c9af
-      internalID: -396004647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runner-explode_4
+      name: impact-circle-style-vfx_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b611bb8b5cf1884dae6bc7dee2e7f82
-      internalID: -518446690
+      spriteID: ef05fda6930e2fc4882fb7efa1e5251a
+      internalID: -1964083451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runner-explode_5
+      name: impact-circle-style-vfx_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +187,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94d4f60a786f2634a8fc41396f1fca8f
-      internalID: -1594048502
+      spriteID: 7d9b87e98ab7cd54ba8dcbafc823ad1f
+      internalID: -330364464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impact-circle-style-vfx_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a039733af1295344977f4cd3f0debd7
+      internalID: 1907450403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impact-circle-style-vfx_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae71ccf0bb3f98f46a48937d4af1d6cf
+      internalID: -505047197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: impact-circle-style-vfx_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da1610c89142dd44a26509652b8c9ce
+      internalID: -1947970190
       vertices: []
       indices: 
       edges: []
@@ -246,12 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      runner-explode_0: 505841411
-      runner-explode_1: 788095254
-      runner-explode_2: -98023561
-      runner-explode_3: -396004647
-      runner-explode_4: -518446690
-      runner-explode_5: -1594048502
+      impact-circle-style-vfx_0: 1217358298
+      impact-circle-style-vfx_1: -764849167
+      impact-circle-style-vfx_2: -1964083451
+      impact-circle-style-vfx_3: -330364464
+      impact-circle-style-vfx_4: 1907450403
+      impact-circle-style-vfx_5: -505047197
+      impact-circle-style-vfx_6: -1947970190
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
