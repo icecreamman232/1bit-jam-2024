@@ -96,7 +96,7 @@ MonoBehaviour:
   m_spriteRenderer: {fileID: 2246026105399940219}
   m_obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   m_damageHandler: {fileID: 804808885373732415}
   m_direction: {x: 0, y: 0}
 --- !u!114 &804808885373732415

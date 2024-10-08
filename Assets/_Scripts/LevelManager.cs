@@ -7,20 +7,28 @@ public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private GameObject m_playerPrefab;
     [SerializeField] private int m_curCheckPtsIndex;
+    [SerializeField] private bool m_debugMode;
+    [SerializeField] private Transform m_debugTransform;
     [SerializeField] private Transform[] m_checkPoint;
 
     private GameObject m_player;
     
     private void Start()
     {
-        m_curCheckPtsIndex = 0;
         StartCoroutine(SpawnPlayerProcess());
     }
 
     private IEnumerator SpawnPlayerProcess()
     {
         ScreenFader.Instance.FadeOut(isInstant:true);
-        m_player = Instantiate(m_playerPrefab, m_checkPoint[m_curCheckPtsIndex].position, Quaternion.identity);
+        if (m_debugMode)
+        {
+            m_player = Instantiate(m_playerPrefab, m_debugTransform.position, Quaternion.identity);
+        }
+        else
+        {
+            m_player = Instantiate(m_playerPrefab, m_checkPoint[m_curCheckPtsIndex].position, Quaternion.identity);
+        }
         yield return new WaitForSeconds(0.25f);
         ScreenFader.Instance.FadeIn();
         yield return new WaitForSeconds(0.5f);
@@ -54,6 +62,5 @@ public class LevelManager : Singleton<LevelManager>
         {
             Gizmos.DrawCube(m_checkPoint[i].position,Vector3.one * 0.8f);
         }
-        
     }
 }

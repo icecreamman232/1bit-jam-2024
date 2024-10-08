@@ -8,7 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] protected int m_currentHealth;
 
     protected bool m_isInvulnerable;
-    
+
+    public Action<int> OnHit;
     public Action OnDeath;
 
     protected virtual void Start()
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
         if (m_isInvulnerable) return;
 
         m_currentHealth -= damage;
+        OnHit?.Invoke(m_currentHealth);
         UpdateHealthBar();
         
         if (m_currentHealth <= 0)
