@@ -30,6 +30,10 @@ public class DamageHandler : MonoBehaviour
         {
             CauseDamageToEnemy(target);
         }
+        else if (target.layer == LayerMask.NameToLayer("Obstacle") && target.CompareTag("Destructible"))
+        {
+            CauseDamageToDestructible(target);
+        }
     }
 
     private void CauseDamageToPlayer(GameObject target)
@@ -45,6 +49,18 @@ public class DamageHandler : MonoBehaviour
     }
     
     private void CauseDamageToEnemy(GameObject target)
+    {
+        var health = target.GetComponent<EnemyHealth>();
+        health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);
+        if (m_isApplyForceOnHit)
+        {
+            var controller = target.GetComponent<Controller2D>();
+            ApplyForceOnHit(controller);
+        }
+        OnHit?.Invoke(target);
+    }
+    
+    private void CauseDamageToDestructible(GameObject target)
     {
         var health = target.GetComponent<EnemyHealth>();
         health.TakeDamage(m_damage,this.gameObject,m_invulnerableTime);

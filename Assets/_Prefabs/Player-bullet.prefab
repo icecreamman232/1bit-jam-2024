@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_targetMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1152
   m_damage: 1
   m_invulnerableTime: 0.3
   m_isApplyForceOnHit: 0
