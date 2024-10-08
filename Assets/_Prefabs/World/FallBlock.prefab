@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &631684129187056196
+--- !u!1 &3278855905540375844
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5530490700949893211}
-  - component: {fileID: 3954068334073344198}
-  m_Layer: 7
+  - component: {fileID: 7171476272704619994}
+  - component: {fileID: 3326158157321570300}
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5530490700949893211
+--- !u!4 &7171476272704619994
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631684129187056196}
+  m_GameObject: {fileID: 3278855905540375844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1574619694511572607}
+  m_Father: {fileID: 1726989815206908399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3954068334073344198
+--- !u!212 &3326158157321570300
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631684129187056196}
+  m_GameObject: {fileID: 3278855905540375844}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1377617581
   m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -450408380, guid: e5bfc67da4da4304eb9c1b1cc9bed08a, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 2121026275, guid: e5bfc67da4da4304eb9c1b1cc9bed08a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,9 +82,9 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 2
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &3562564693008187244
+--- !u!1 &5931554238239262408
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,41 +92,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1574619694511572607}
-  - component: {fileID: 5537300856589587874}
-  - component: {fileID: 5693025489902995108}
-  - component: {fileID: 3004170960111871235}
-  - component: {fileID: 8656560589674080709}
-  m_Layer: 7
-  m_Name: BreakableWall
-  m_TagString: Destructible
+  - component: {fileID: 1726989815206908399}
+  - component: {fileID: 1784134266030653951}
+  - component: {fileID: 5808879247092965980}
+  m_Layer: 12
+  m_Name: FallBlock
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1574619694511572607
+--- !u!4 &1726989815206908399
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562564693008187244}
+  m_GameObject: {fileID: 5931554238239262408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5, y: 34.5, z: -0.07812381}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5530490700949893211}
+  - {fileID: 7171476272704619994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5537300856589587874
+--- !u!114 &1784134266030653951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5931554238239262408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f688a8fef8618b34db6076de620476e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gravity: -20
+  m_gravityActive: 1
+  m_velocity: {x: 0, y: 0}
+  m_horizontalRayCount: 2
+  m_verticalRayCount: 2
+  m_obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &5808879247092965980
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562564693008187244}
+  m_GameObject: {fileID: 5931554238239262408}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -165,60 +183,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &5693025489902995108
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562564693008187244}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &3004170960111871235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562564693008187244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea95c822486eb7741b65829fd1b9bc9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 2
-  m_currentHealth: 2
-  m_noDamage: 0
---- !u!114 &8656560589674080709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3562564693008187244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 310189d43f5cfd74a80a41cec2c7e876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_triggerEvent:
-    m_PersistentCalls:
-      m_Calls: []

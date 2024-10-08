@@ -8,6 +8,7 @@ public class GhostMovement : MonoBehaviour
 {
     [Header("Moving")]
     [SerializeField] private float m_speed;
+    [SerializeField] private bool m_isMovingVertical;
     [SerializeField] private float m_leftPatrolDistance;
     [SerializeField] private float m_rightPatrolDistance;
 
@@ -34,8 +35,17 @@ public class GhostMovement : MonoBehaviour
     
     private void Start()
     {
-        m_leftPoint = transform.position - new Vector3(m_leftPatrolDistance, 0, 0);
-        m_rightPoint = transform.position + new Vector3(m_rightPatrolDistance, 0, 0);
+        if (m_isMovingVertical)
+        {
+            m_leftPoint = transform.position - new Vector3(0, m_leftPatrolDistance, 0);
+            m_rightPoint = transform.position + new Vector3(0,m_rightPatrolDistance, 0);
+        }
+        else
+        {
+            m_leftPoint = transform.position - new Vector3(m_leftPatrolDistance, 0, 0);
+            m_rightPoint = transform.position + new Vector3(m_rightPatrolDistance, 0, 0);
+        }
+        
 
         m_delayToInvi = Random.Range(m_minDelayToInvi, m_maxDelayToInvi);
     }

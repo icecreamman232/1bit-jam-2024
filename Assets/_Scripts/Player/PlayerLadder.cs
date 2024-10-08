@@ -1,10 +1,9 @@
-using System;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerLadder : MonoBehaviour
 {
-    [SerializeField] private CameraFollowing m_cameraFollowing;
+    private CameraFollowing m_cameraFollowing;
     [SerializeField] private float m_climbingVelocity;
 
     private PlayerHealth m_health;
@@ -22,6 +21,7 @@ public class PlayerLadder : MonoBehaviour
         m_health = GetComponent<PlayerHealth>();
         m_controller2D = GetComponent<Controller2D>();
         m_animator = GetComponentInChildren<Animator>();
+        m_cameraFollowing = Camera.main.GetComponent<CameraFollowing>();
         m_health.OnDeath += HandleClimbingOnDead;
     }
 

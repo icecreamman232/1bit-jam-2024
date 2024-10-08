@@ -164,7 +164,7 @@ MonoBehaviour:
   m_verticalRayCount: 4
   m_obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
 --- !u!114 &4377718358199302801
 MonoBehaviour:
   m_ObjectHideFlags: 0

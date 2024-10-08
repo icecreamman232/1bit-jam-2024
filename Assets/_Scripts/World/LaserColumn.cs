@@ -16,6 +16,14 @@ public class LaserColumn : MonoBehaviour
     private void Start()
     {
         m_damageHandler.OnHit += OnHitPlayer;
+        if (m_isOpen)
+        {
+            TurnOn();
+        }
+        else
+        {
+            TurnOff();
+        }
     }
 
     private void OnDestroy()
@@ -39,6 +47,18 @@ public class LaserColumn : MonoBehaviour
     private void TestTurnOff()
     {
         TurnOff();
+    }
+
+    public void ToggleLaser()
+    {
+        if (m_isOpen)
+        {
+            TurnOff();
+        }
+        else
+        {
+            TurnOn();
+        }
     }
     
     public void TurnOn()

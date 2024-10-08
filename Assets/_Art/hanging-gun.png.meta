@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5bfc67da4da4304eb9c1b1cc9bed08a
+guid: 49d6b3413eab7224c923b64648ec0648
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,94 +110,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scifi-floor_0
+      name: hanging-gun_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8859a7cdd0ed2ea41b1d03a2a619c679
-      internalID: 1181759802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi-floor_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 297d6975da6aaec499b1461fde59b089
-      internalID: -369373449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi-floor_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21b04ceb8a5044e41b39e03cd197ae8d
-      internalID: -1268709518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi-floor_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 505da786002f06a4dbce118b471f2f96
-      internalID: -450408380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi-floor_4
-      rect:
-        serializedVersion: 2
-        x: 64
         y: 0
         width: 16
         height: 16
@@ -208,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c23a9c3ee3a24d45a90453919c178a4
-      internalID: 2121026275
+      spriteID: fa5e05a4791c5f140bdfe91fc46b429b
+      internalID: -693617528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hanging-gun_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb8c619f6e35bc4c8f714febb950e82
+      internalID: -641049550
       vertices: []
       indices: 
       edges: []
@@ -225,11 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      scifi-floor_0: 1181759802
-      scifi-floor_1: -369373449
-      scifi-floor_2: -1268709518
-      scifi-floor_3: -450408380
-      scifi-floor_4: 2121026275
+      hanging-gun_0: -693617528
+      hanging-gun_1: -641049550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

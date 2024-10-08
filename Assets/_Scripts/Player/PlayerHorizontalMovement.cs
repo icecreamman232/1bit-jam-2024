@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerHorizontalMovement : MonoBehaviour
 {
     [SerializeField] private float m_moveSpeed;
-    [SerializeField] private CameraFollowing m_cameraFollowing;
+    private CameraFollowing m_cameraFollowing;
     
     private readonly int m_runningAnimParam = Animator.StringToHash("Running");
 
@@ -28,6 +28,9 @@ public class PlayerHorizontalMovement : MonoBehaviour
         m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_animator = GetComponentInChildren<Animator>();
         m_controller2D = GetComponent<Controller2D>();
+        m_cameraFollowing = Camera.main.GetComponent<CameraFollowing>();
+        
+        m_cameraFollowing.SetTarget(transform);
         m_cameraFollowing.SetCameraPosition(transform.position);
 
         m_health.OnDeath += HandleHorizontalMovementOnDead;
