@@ -70,6 +70,18 @@ public class LevelManager : Singleton<LevelManager>
         m_curCheckPtsIndex = index;
     }
 
+    public void FreezePlayer()
+    {
+        var controller = m_player.GetComponent<Controller2D>();
+        controller.Freeze();
+    }
+
+    public void UnfreezePlayer()
+    {
+        var controller = m_player.GetComponent<Controller2D>();
+        controller.UnFreeze();
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

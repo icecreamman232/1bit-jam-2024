@@ -11,6 +11,7 @@ public class Controller2D : MonoBehaviour
     [SerializeField] private float m_verticalRayCount;
     [SerializeField] private LayerMask m_obstacleMask;
 
+    private bool m_isFreeze;
     private bool m_isClimbing;
     private float m_horizontalRaySpacing;
     private float m_verticalRaySpacing;
@@ -55,6 +56,11 @@ public class Controller2D : MonoBehaviour
 
     private void Update()
     {
+        if (m_isFreeze)
+        {
+            return;
+        }
+        
         if (m_gravityActive)
         {
             m_velocity.y += m_gravity * Time.deltaTime;
@@ -186,5 +192,17 @@ public class Controller2D : MonoBehaviour
     public void SetClimbing(bool value)
     {
         m_isClimbing = value;
+    }
+
+    public void Freeze()
+    {
+        m_velocity = Vector2.zero;
+        m_isFreeze = true;
+    }
+
+    public void UnFreeze()
+    {
+        m_velocity = Vector2.zero;
+        m_isFreeze = false;
     }
 }

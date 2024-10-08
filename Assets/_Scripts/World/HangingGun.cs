@@ -9,10 +9,14 @@ public class HangingGun : MonoBehaviour
     [SerializeField] private float m_delayBetween2Shot;
     [SerializeField] private Transform m_shootPivot;
     [SerializeField] private Vector2 m_shootDirection;
+    [SerializeField] private bool m_shootFromStart = true;
     
     private void Start()
     {
-        Shoot();
+        if (m_shootFromStart)
+        {
+            Shoot();
+        }
     }
     
     private void Shoot()

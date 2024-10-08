@@ -33,9 +33,15 @@ public class BossPhase1 : MonoBehaviour
     }
 
     [ContextMenu("Test Phase 1")]
-    public void EnterPhase()
+    public void EnterPhase(bool isPlayerAtLeft)
     {
         m_health.OnHit += OnBossHit;
+        if (isPlayerAtLeft)
+        {
+            m_lerpValue = 1;
+            m_isMovingToRight = false;
+        }
+        
         StartCoroutine(OnEnterPhase());
     }
     
@@ -152,9 +158,8 @@ public class BossPhase1 : MonoBehaviour
     {
         m_spriteRenderer.enabled = false;
         yield return new WaitForEndOfFrame();
-        int rand = Random.Range(0, 1);
-        m_lerpValue = rand;
-        if (rand == 0)
+        
+        if (m_isMovingToRight)
         {
             transform.parent.position = m_leftPoint.position;
         }
