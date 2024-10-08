@@ -32,6 +32,7 @@ public class PlayerHorizontalMovement : MonoBehaviour
         
         m_cameraFollowing.SetTarget(transform);
         m_cameraFollowing.SetCameraPosition(transform.position);
+        m_cameraFollowing.SetPermission(true);
 
         m_health.OnDeath += HandleHorizontalMovementOnDead;
     }

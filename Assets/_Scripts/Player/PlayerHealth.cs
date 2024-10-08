@@ -1,7 +1,6 @@
 using System.Collections;
 using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerHealth : Health
 {
@@ -22,6 +21,7 @@ public class PlayerHealth : Health
         m_animator = GetComponentInChildren<Animator>();
         m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         base.Start();
+        UpdateHealthBar();
     }
 
     public override void TakeDamage(int damage, GameObject instigator, float invulnerableDuration)
@@ -65,5 +65,6 @@ public class PlayerHealth : Health
         m_animator.SetTrigger("Dead");
         yield return new WaitForSeconds(m_deadAnimDuration);
         this.gameObject.SetActive(false);
+        LevelManager.Instance.RevivePlayer();
     }
 }
