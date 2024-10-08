@@ -19,15 +19,16 @@ public class LevelManager : Singleton<LevelManager>
 
     private IEnumerator SpawnPlayerProcess()
     {
+        ScreenFader.Instance.FadeOut(isInstant:true);
         m_player = Instantiate(m_playerPrefab, m_checkPoint[m_curCheckPtsIndex].position, Quaternion.identity);
         yield return new WaitForSeconds(0.25f);
-        //Fade int screen
+        ScreenFader.Instance.FadeIn();
         yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator OnRevivePlayer()
     {
-        //Fade out screen
+        ScreenFader.Instance.FadeOut();
         yield return new WaitForSeconds(0.5f);
         Destroy(m_player);
         StartCoroutine(SpawnPlayerProcess());
