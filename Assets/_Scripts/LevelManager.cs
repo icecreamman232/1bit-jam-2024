@@ -1,21 +1,37 @@
 using System;
 using System.Collections;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private GameObject m_playerPrefab;
+    [SerializeField] private int m_collectedKeyNumber;
+    [SerializeField] private ActionEvent m_collectKeyEvent;
     [SerializeField] private int m_curCheckPtsIndex;
     [SerializeField] private bool m_debugMode;
     [SerializeField] private Transform m_debugTransform;
     [SerializeField] private Transform[] m_checkPoint;
 
     private GameObject m_player;
+
+    public int CollectedKeyNumber => m_collectedKeyNumber;
     
     private void Start()
     {
         StartCoroutine(SpawnPlayerProcess());
+        m_collectKeyEvent.AddListener(OnCollectKey);
+    }
+
+    private void OnDestroy()
+    {
+        m_collectKeyEvent.RemoveListener(OnCollectKey);
+    }
+
+    private void OnCollectKey()
+    {
+        m_collectedKeyNumber++;
     }
 
     private IEnumerator SpawnPlayerProcess()
