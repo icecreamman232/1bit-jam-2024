@@ -15,6 +15,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private Transform[] m_checkPoint;
 
     private GameObject m_player;
+    public GameObject Player => m_player;
 
     public int CollectedKeyNumber => m_collectedKeyNumber;
     

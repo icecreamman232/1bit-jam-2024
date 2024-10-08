@@ -21,6 +21,7 @@ public class BossPhase1 : MonoBehaviour
     [SerializeField] private Transform m_highestSpikePivot;
     [SerializeField] private bool m_spikeHasBeenStarted;
 
+    private BossController m_bossController;
     private BossHealth m_health;
     private float m_spikeTimer;
     private bool m_isMovingToRight;
@@ -29,6 +30,7 @@ public class BossPhase1 : MonoBehaviour
 
     private void Start()
     {
+        m_bossController = GetComponentInParent<BossController>();
         m_health = GetComponentInParent<BossHealth>();
     }
 
@@ -53,6 +55,8 @@ public class BossPhase1 : MonoBehaviour
         m_spikeGroup1.gameObject.SetActive(false);
         m_spikeGroup2.gameObject.SetActive(false);
         m_spikeGroup3.gameObject.SetActive(false);
+        
+        m_bossController.SwitchToPhase2();
     }
 
     private void OnBossHit(int currentHealth)

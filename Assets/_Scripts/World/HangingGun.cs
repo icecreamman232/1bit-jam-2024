@@ -19,7 +19,7 @@ public class HangingGun : MonoBehaviour
         }
     }
     
-    private void Shoot()
+    public void Shoot()
     {
         var bulletGO = m_bulletPooler.GetPooledGameObject();
         var bullet = bulletGO.GetComponent<Projectile>();
@@ -27,6 +27,11 @@ public class HangingGun : MonoBehaviour
         
         
         StartCoroutine(OnDelayAfterShoot());
+    }
+
+    public void StopShoot()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator OnDelayAfterShoot()

@@ -14,4 +14,14 @@ public class BossController : MonoBehaviour
     {
         m_phase1.EnterPhase(false);
     }
+
+    public void SwitchToPhase2()
+    {
+        m_phase2.EnterPhase();
+    }
+
+    public void SwitchToPhase1()
+    {
+        m_phase1.EnterPhase(LevelManager.Instance.Player.transform.position.x < 0);
+    }
 }
