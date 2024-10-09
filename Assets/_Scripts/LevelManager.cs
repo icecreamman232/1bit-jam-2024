@@ -14,10 +14,13 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private Transform m_debugTransform;
     [SerializeField] private Transform[] m_checkPoint;
 
+    private bool m_isPaused;
     private GameObject m_player;
     public GameObject Player => m_player;
 
     public int CollectedKeyNumber => m_collectedKeyNumber;
+
+    public Action<bool> OnPauseChange;
     
     private void Start()
     {
@@ -81,6 +84,20 @@ public class LevelManager : Singleton<LevelManager>
     {
         var controller = m_player.GetComponent<Controller2D>();
         controller.UnFreeze();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        m_isPaused = true;
+        OnPauseChange?.Invoke(m_isPaused);
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        m_isPaused = false;
+        OnPauseChange?.Invoke(m_isPaused);
     }
 
     private void OnDrawGizmos()
