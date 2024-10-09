@@ -83,6 +83,7 @@ public class BossPhase2 : MonoBehaviour
         m_warningSign.SetActive(false);
         transform.parent.position = pos;
         m_renderer.enabled = true;
+        CameraController.Instance.Shake();
         
         m_isPlayingWarning = false;
     }

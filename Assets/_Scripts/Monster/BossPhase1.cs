@@ -61,6 +61,9 @@ public class BossPhase1 : MonoBehaviour
 
     private void OnBossHit(int currentHealth)
     {
+        if (!m_isPlaying) return;
+        
+        
         if (currentHealth <= m_limitHealthToExitPhase)
         {
             ExitPhase();
