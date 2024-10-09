@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using SGGames.Scripts.Managers;
 using UnityEngine;
@@ -9,7 +8,8 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private ObjectPooler m_bulletPooler;
     [SerializeField] private Transform m_shootPivot;
     [SerializeField] private Vector2 m_aimDirection = Vector2.right;
-
+    
+    private PlayerSoundBank m_soundBank;
     private bool m_isAllow;
     private bool m_isDelay;
     private Animator m_animator;
@@ -18,6 +18,7 @@ public class PlayerGun : MonoBehaviour
     private void Start()
     {
         m_isAllow = true;
+        m_soundBank = GetComponent<PlayerSoundBank>();
         m_health = GetComponent<PlayerHealth>();
         m_animator = GetComponentInChildren<Animator>();
         m_horizontalMovement = GetComponent<PlayerHorizontalMovement>();
@@ -86,6 +87,8 @@ public class PlayerGun : MonoBehaviour
     private void Shoot()
     {
         if (m_isDelay) return;
+        
+        m_soundBank.PlayShootSFX();
         
         var bulletGO = m_bulletPooler.GetPooledGameObject();
         var bullet = bulletGO.GetComponent<PlayerBullet>();

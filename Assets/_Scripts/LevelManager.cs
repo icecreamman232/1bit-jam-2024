@@ -13,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private bool m_debugMode;
     [SerializeField] private Transform m_debugTransform;
     [SerializeField] private Transform[] m_checkPoint;
+    [SerializeField] private AudioSource m_backgroundMusicPlayer;
 
     private bool m_isPaused;
     private GameObject m_player;
@@ -51,6 +52,10 @@ public class LevelManager : Singleton<LevelManager>
         }
         yield return new WaitForSeconds(0.25f);
         ScreenFader.Instance.FadeIn();
+        if (!m_backgroundMusicPlayer.isPlaying)
+        {
+            m_backgroundMusicPlayer.Play();
+        }
         yield return new WaitForSeconds(0.5f);
     }
 

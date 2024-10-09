@@ -6,6 +6,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float m_timeToJumpPeak;
     [SerializeField] private float m_jumpVelocity;
 
+    private PlayerSoundBank m_soundBank;
     private Controller2D m_controller2D;
     private Animator m_animator;
 
@@ -15,6 +16,7 @@ public class PlayerJump : MonoBehaviour
     {
         m_animator = GetComponentInChildren<Animator>();
         m_controller2D = GetComponent<Controller2D>();
+        m_soundBank = GetComponent<PlayerSoundBank>();
         ComputeJumpParams();
     }
 
@@ -23,6 +25,7 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && m_controller2D.CollisionInfos.CollideBelow)
         {
             m_controller2D.SetVerticalVelocity(m_jumpVelocity);
+            m_soundBank.PlayJumpSFX();
         }
 
         UpdateAnimator();
