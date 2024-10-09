@@ -1,11 +1,10 @@
 using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class KeyBar : MonoBehaviour
 {
     [SerializeField] private ActionEvent m_collectKeyEvent;
-    [SerializeField] private Image[] m_keyIcons;
+    [SerializeField] private KeyIconUIView[] m_keyIcons;
     private int m_lastIndex;
 
     private void Start()
@@ -13,7 +12,7 @@ public class KeyBar : MonoBehaviour
         m_collectKeyEvent.AddListener(OnCollectKey);
         for (int i = 0; i < m_keyIcons.Length; i++)
         {
-            m_keyIcons[i].color = Color.black;
+            m_keyIcons[i].ShowDisappear();
         }
     }
 
@@ -24,7 +23,7 @@ public class KeyBar : MonoBehaviour
 
     private void OnCollectKey()
     {
-        m_keyIcons[m_lastIndex].color = Color.white;
+        m_keyIcons[m_lastIndex].ShowAppear();
         m_lastIndex++;
     }
 }
