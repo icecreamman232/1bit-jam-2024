@@ -23,12 +23,21 @@ public class PlayerGun : MonoBehaviour
         m_horizontalMovement = GetComponent<PlayerHorizontalMovement>();
 
         m_health.OnDeath += HandleGunOnPlayerDead;
+        LevelManager.Instance.OnPauseChange += OnPauseGame;
     }
+    
 
     private void OnDestroy()
     {
         m_health.OnDeath -= HandleGunOnPlayerDead;
+        LevelManager.Instance.OnPauseChange -= OnPauseGame;
     }
+    
+    private void OnPauseGame(bool isPause)
+    {
+        m_isAllow = !isPause;
+    }
+    
 
     private void HandleGunOnPlayerDead()
     {
