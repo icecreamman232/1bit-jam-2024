@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -48,5 +49,11 @@ public class PauseMenu : MonoBehaviour
         m_parentCanvasGroup.blocksRaycasts = false;
         
         LevelManager.Instance.UnpauseGame();
+    }
+
+    public void QuitGameplay()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

@@ -35,6 +35,7 @@ public class ScreenFader : Singleton<ScreenFader>
             return;
         }
         StartCoroutine(OnFadeIn());
+        Debug.Log("FADE IN");
     }
 
     private IEnumerator OnFadeIn()

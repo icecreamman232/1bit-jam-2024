@@ -99,7 +99,7 @@ public class LevelManager : Singleton<LevelManager>
         m_isPaused = false;
         OnPauseChange?.Invoke(m_isPaused);
     }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
