@@ -101,6 +101,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
+--- !u!61 &2337034880053998172 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2528721357618236434, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
+  m_PrefabInstance: {fileID: 250233977533087310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5996130426979071802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5786996469003716980, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
@@ -359,6 +364,34 @@ PrefabInstance:
     - target: {fileID: 3562564693008187244, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
       propertyPath: m_Name
       value: BreakableWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2337034880053998172}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -650,6 +683,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
+--- !u!61 &2288682126726737032 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2528721357618236434, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
+  m_PrefabInstance: {fileID: 4383369035888353434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7825937053240682990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5786996469003716980, guid: fe510b4445b9ca84abb1b6c77d867447, type: 3}
@@ -706,6 +744,34 @@ PrefabInstance:
     - target: {fileID: 3562564693008187244, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
       propertyPath: m_Name
       value: BreakableWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2288682126726737032}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656560589674080709, guid: d74d667a3f14c924b991682c9f6b35af, type: 3}
+      propertyPath: m_triggerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
