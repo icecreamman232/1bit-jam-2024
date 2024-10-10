@@ -31,6 +31,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void OnDestroy()
     {
+        if (m_collectKeyEvent == null) return;
         m_collectKeyEvent.RemoveListener(OnCollectKey);
     }
 
