@@ -76,6 +76,26 @@ public class LevelManager : Singleton<LevelManager>
         m_curCheckPtsIndex = index;
     }
 
+    public void BlockPlayerInput()
+    {
+        var horizontalInput = m_player.GetComponent<PlayerHorizontalMovement>();
+        horizontalInput.ToggleAllow(false);
+        var jump = m_player.GetComponent<PlayerJump>();
+        jump.ToggleAllow(false);
+        var gun = m_player.GetComponent<PlayerGun>();
+        gun.ToggleAllow(false);
+    }
+
+    public void UnlockPlayerInput()
+    {
+        var horizontalInput = m_player.GetComponent<PlayerHorizontalMovement>();
+        horizontalInput.ToggleAllow(true);
+        var jump = m_player.GetComponent<PlayerJump>();
+        jump.ToggleAllow(true);
+        var gun = m_player.GetComponent<PlayerGun>();
+        gun.ToggleAllow(true);
+    }
+    
     public void FreezePlayer()
     {
         var controller = m_player.GetComponent<Controller2D>();

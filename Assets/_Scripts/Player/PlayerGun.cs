@@ -111,4 +111,9 @@ public class PlayerGun : MonoBehaviour
         yield return new WaitForSeconds(m_delayBetween2Shot);
         m_isDelay = false;
     }
+
+    public void ToggleAllow(bool value)
+    {
+        m_isAllow = value;
+    }
 }

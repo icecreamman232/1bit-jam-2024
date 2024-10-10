@@ -11,9 +11,11 @@ public class PlayerJump : MonoBehaviour
     private Animator m_animator;
 
     private int m_jumpAnimParam = Animator.StringToHash("Jumping");
+    private bool m_isAllow;
     
     private void Start()
     {
+        m_isAllow = true;
         m_animator = GetComponentInChildren<Animator>();
         m_controller2D = GetComponent<Controller2D>();
         m_soundBank = GetComponent<PlayerSoundBank>();
@@ -22,6 +24,11 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
+        if (!m_isAllow)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && m_controller2D.CollisionInfos.CollideBelow)
         {
             m_controller2D.SetVerticalVelocity(m_jumpVelocity);
@@ -40,5 +47,10 @@ public class PlayerJump : MonoBehaviour
     private void UpdateAnimator()
     {
         m_animator.SetBool(m_jumpAnimParam,m_controller2D.Velocity.y != 0 && m_controller2D.IsGravityActive);
+    }
+
+    public void ToggleAllow(bool value)
+    {
+        m_isAllow = value;
     }
 }

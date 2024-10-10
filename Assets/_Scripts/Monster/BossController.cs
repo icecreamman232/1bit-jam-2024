@@ -11,6 +11,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private ActionEvent m_playerDeadEvent;
     [SerializeField] private TriggerZone m_leftTriggerZone;
     [SerializeField] private TriggerZone m_rightTriggerZone;
+    [SerializeField] private FinalLadder m_finalLadder;
     
     private Health m_health;
     private float m_laughSFXTimer;
@@ -69,9 +70,14 @@ public class BossController : MonoBehaviour
     private void OnBossDeath()
     {
         m_phase2.ExitPhase();
+        
+        m_phase1.gameObject.SetActive(false);
+        m_phase2.gameObject.SetActive(false);
         m_laughSFX.Stop();
         SoundManager.Instance.StopMusic();
-        //Show ending screen
+        
+        m_finalLadder.gameObject.SetActive(true);
+        m_finalLadder.TriggerFinalLadder();
     }
 
     public void StartFightFromLeft()
@@ -88,11 +94,8 @@ public class BossController : MonoBehaviour
 
     public void SwitchToPhase2()
     {
+        m_phase1.gameObject.SetActive(false);
         m_phase2.EnterPhase();
     }
-
-    public void SwitchToPhase1()
-    {
-        m_phase1.EnterPhase(LevelManager.Instance.Player.transform.position.x < 0);
-    }
+    
 }

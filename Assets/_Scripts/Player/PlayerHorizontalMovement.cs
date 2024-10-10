@@ -102,4 +102,9 @@ public class PlayerHorizontalMovement : MonoBehaviour
     {
         m_cameraFollowing.SetPermission(value);
     }
+
+    public void ToggleAllow(bool value)
+    {
+        m_isAllow = value;
+    }
 }
