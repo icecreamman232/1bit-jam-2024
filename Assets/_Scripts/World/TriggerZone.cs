@@ -11,6 +11,11 @@ public class TriggerZone : MonoBehaviour
     [SerializeField] private UnityEvent m_triggerEvent;
     [SerializeField] private bool m_triggerOnce;
     private bool m_hasTrigger;
+
+    public void ResetTriggerZone()
+    {
+        m_hasTrigger = false;
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {

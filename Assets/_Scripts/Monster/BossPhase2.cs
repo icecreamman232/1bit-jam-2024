@@ -14,10 +14,24 @@ public class BossPhase2 : MonoBehaviour
 
     private float m_timer;
     private bool m_isPlayingWarning = true;
+    private bool m_isPlaying;
+    public bool IsPlaying => m_isPlaying;
     
     public void EnterPhase()
     {
         StartCoroutine(OnEnterPhase());
+    }
+    
+    public void StopPhase()
+    {
+        for (int i = 0; i < m_hangingGun.Length; i++)
+        {
+            m_hangingGun[i].StopShoot();
+        }
+        m_gunGroup.SetActive(false);
+        m_warningSign.SetActive(false);
+        StopAllCoroutines();
+        m_isPlayingWarning = true; //Tricky to stop update loop
     }
 
     public void ExitPhase()
@@ -34,6 +48,7 @@ public class BossPhase2 : MonoBehaviour
 
     private IEnumerator OnEnterPhase()
     {
+        m_isPlaying = true;
         m_renderer.enabled = false;
         transform.parent.position = new Vector3(0, 100, 0);
         yield return new WaitForEndOfFrame();

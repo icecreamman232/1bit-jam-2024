@@ -6,6 +6,7 @@ public class PlayerHealth : Health
 {
     [SerializeField] private bool m_godMode;
     [SerializeField] private IntEvent m_updateHealthBarEvent;
+    [SerializeField] private ActionEvent m_deadEvent;
     [SerializeField] private float m_deadAnimDuration;
     [SerializeField] private float m_delayBetween2Flick;
     
@@ -65,6 +66,7 @@ public class PlayerHealth : Health
         m_animator.SetTrigger("Dead");
         yield return new WaitForSeconds(m_deadAnimDuration);
         this.gameObject.SetActive(false);
+        m_deadEvent.Raise();
         LevelManager.Instance.RevivePlayer();
     }
 }

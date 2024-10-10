@@ -28,6 +28,8 @@ public class BossPhase1 : MonoBehaviour
     private bool m_isPlaying;
     private float m_lerpValue;
 
+    public bool IsPlaying => m_isPlaying;
+
     private void Start()
     {
         m_bossController = GetComponentInParent<BossController>();
@@ -45,6 +47,17 @@ public class BossPhase1 : MonoBehaviour
         }
         
         StartCoroutine(OnEnterPhase());
+    }
+
+    public void StopPhase()
+    {
+        StopAllCoroutines();
+        m_isPlaying = false;
+        m_health.OnHit -= OnBossHit;
+        StopAllCoroutines();
+        m_spikeGroup1.gameObject.SetActive(false);
+        m_spikeGroup2.gameObject.SetActive(false);
+        m_spikeGroup3.gameObject.SetActive(false);
     }
     
     public void ExitPhase()

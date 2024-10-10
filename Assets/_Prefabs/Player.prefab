@@ -570,6 +570,7 @@ MonoBehaviour:
   m_currentHealth: 0
   m_godMode: 0
   m_updateHealthBarEvent: {fileID: 11400000, guid: d861b6ad53824ad48bdb3fc4a5b75ec5, type: 2}
+  m_deadEvent: {fileID: 11400000, guid: 062c3b00aee614546b012503056bab9f, type: 2}
   m_deadAnimDuration: 0.7
   m_delayBetween2Flick: 0.1
 --- !u!114 &2865805245136080421
