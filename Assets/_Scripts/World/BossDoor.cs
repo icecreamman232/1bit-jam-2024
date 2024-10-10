@@ -18,6 +18,7 @@ public class BossDoor : MonoBehaviour
     public void Open()
     {
         if (m_isOpen) return;
+        SoundManager.Instance.StopMusic();
         StartCoroutine(OnOpen());
     }
 

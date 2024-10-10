@@ -22,11 +22,13 @@ public class BossController : MonoBehaviour
 
     public void StartFightFromLeft()
     {
+        SoundManager.Instance.PlayBossBGM();
         m_phase1.EnterPhase(true);
     }
     
     public void StartFightFromRight()
     {
+        SoundManager.Instance.PlayBossBGM();
         m_phase1.EnterPhase(false);
     }
 
