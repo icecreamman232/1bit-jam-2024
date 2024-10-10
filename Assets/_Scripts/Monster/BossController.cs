@@ -34,6 +34,8 @@ public class BossController : MonoBehaviour
         
         m_leftTriggerZone.ResetTriggerZone();
         m_rightTriggerZone.ResetTriggerZone();
+        
+        m_health.ResetHealth();
 
         yield return new WaitForSeconds(0.7f);
         transform.position = new Vector3(0, 100, 0);

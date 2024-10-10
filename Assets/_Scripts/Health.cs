@@ -17,6 +17,12 @@ public class Health : MonoBehaviour
         m_currentHealth = m_maxHealth;
     }
 
+    public virtual void ResetHealth()
+    {
+        m_currentHealth = m_maxHealth;
+        m_isInvulnerable = false;
+    }
+
     public virtual void TakeDamage(int damage, GameObject instigator, float invulnerableDuration)
     {
         if (damage <= 0) { return; }

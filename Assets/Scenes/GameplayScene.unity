@@ -871,6 +871,8 @@ MonoBehaviour:
   m_phase2: {fileID: 1716490535}
   m_laughSFX: {fileID: 1167284880}
   m_playerDeadEvent: {fileID: 11400000, guid: 062c3b00aee614546b012503056bab9f, type: 2}
+  m_leftTriggerZone: {fileID: 28776681}
+  m_rightTriggerZone: {fileID: 88904300}
 --- !u!1 &279676766
 GameObject:
   m_ObjectHideFlags: 0
