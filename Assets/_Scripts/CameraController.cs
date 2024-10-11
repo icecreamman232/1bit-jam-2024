@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Data;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using Random = UnityEngine.Random;
@@ -12,9 +14,7 @@ public class CameraController : Singleton<CameraController>
     [SerializeField] private Vector2 m_zoomOutValue;
     [SerializeField] private Vector3 m_lockCameraPos;
     [Header("Shake")]
-    [SerializeField] private float m_shakeDuration;
-    [SerializeField] private float m_shakePower;
-    [SerializeField] private float m_shakeFrequency;
+    [SerializeField] private ShakeEvent m_shakeEvent;
     
     private PixelPerfectCamera m_pixelPerfectCamera;
     private CameraFollowing m_cameraFollowing;
@@ -25,24 +25,22 @@ public class CameraController : Singleton<CameraController>
     {
         m_pixelPerfectCamera = GetComponent<PixelPerfectCamera>();
         m_cameraFollowing = GetComponent<CameraFollowing>();
+        
+        m_shakeEvent.AddListener(OnReceiveShakeEvent);
     }
 
-    #if UNITY_EDITOR
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Shake();
-        }
+        m_shakeEvent.RemoveListener(OnReceiveShakeEvent);
     }
-    #endif
 
-    public void Shake()
+    #region Shaking
+    private void OnReceiveShakeEvent(ShakeProfile profile)
     {
-        StartCoroutine(OnShake());
+        StartCoroutine(OnShake(profile));
     }
 
-    private IEnumerator OnShake()
+    private IEnumerator OnShake(ShakeProfile profile)
     {
         if (m_isShaking)
         {
@@ -52,20 +50,21 @@ public class CameraController : Singleton<CameraController>
         m_isShaking = true;
         
         var startPos = m_pixelPerfectCamera.transform.position;
-        var duration = m_shakeDuration;
+        var duration = profile.Duration;
         while (duration > 0)
         {
-            Vector3 randomPos = Random.insideUnitCircle * m_shakePower;
+            Vector3 randomPos = Random.insideUnitCircle * profile.Power;
             randomPos.z = -10;
             m_pixelPerfectCamera.transform.position = startPos + randomPos;
-            yield return new WaitForSeconds(m_shakeFrequency);
-            duration -= m_shakeFrequency;
+            yield return new WaitForSeconds(profile.Frequency);
+            duration -= profile.Frequency;
         }
 
         m_pixelPerfectCamera.transform.position = startPos;
         m_isShaking = false;
     }
     
+    #endregion
 
     public void ZoomOut()
     {

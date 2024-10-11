@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Data;
+using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +13,8 @@ public class BossPhase2 : MonoBehaviour
     [SerializeField] private GameObject m_warningSign;
     [SerializeField] private float m_warningDuration;
     [SerializeField] private float m_delayBeforeChangePos;
+    [SerializeField] private ShakeEvent m_shakeEvent;
+    [SerializeField] private ShakeProfile m_shakeProfile;
 
     private float m_timer;
     private bool m_isPlayingWarning = true;
@@ -98,7 +102,7 @@ public class BossPhase2 : MonoBehaviour
         m_warningSign.SetActive(false);
         transform.parent.position = pos;
         m_renderer.enabled = true;
-        CameraController.Instance.Shake();
+        m_shakeEvent.Raise(m_shakeProfile);
         
         m_isPlayingWarning = false;
     }
