@@ -20,11 +20,11 @@ namespace SGGames.Scripts.Player
         
         protected override void Start()
         {
+            base.Start();
             m_isAllow = true;
             m_animator = GetComponentInChildren<Animator>();
             m_soundBank = GetComponent<PlayerSoundBank>();
             ComputeJumpParams();
-            base.Start();
         }
 
         private void Update()
