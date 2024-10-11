@@ -601,6 +601,8 @@ MonoBehaviour:
   m_jumpHeight: 3
   m_timeToJumpPeak: 0
   m_jumpVelocity: 0
+  m_jumpAcceleration: 0.5
+  m_coyoteTime: 0.5
 --- !u!114 &2659107877466936985
 MonoBehaviour:
   m_ObjectHideFlags: 0

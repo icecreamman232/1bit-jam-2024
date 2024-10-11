@@ -5,6 +5,8 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float m_jumpHeight;
     [SerializeField] private float m_timeToJumpPeak;
     [SerializeField] private float m_jumpVelocity;
+    [SerializeField] private float m_jumpAcceleration;
+    [SerializeField] private float m_coyoteTime;
 
     private PlayerSoundBank m_soundBank;
     private Controller2D m_controller2D;
@@ -12,6 +14,9 @@ public class PlayerJump : MonoBehaviour
 
     private int m_jumpAnimParam = Animator.StringToHash("Jumping");
     private bool m_isAllow;
+    private bool m_isJumping;
+    private float m_lastJumpY;
+    private float m_coyoteTimer;
     
     private void Start()
     {
@@ -28,12 +33,37 @@ public class PlayerJump : MonoBehaviour
         {
             return;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Space) && m_controller2D.CollisionInfos.CollideBelow)
+
+        if (!m_controller2D.CollisionInfos.CollideBelow)
         {
+            m_coyoteTimer += Time.deltaTime;
+        }
+        else
+        {
+            m_coyoteTimer = 0;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && m_controller2D.CollisionInfos.CollideBelow
+            && m_coyoteTimer <= m_coyoteTime)
+        {
+            m_lastJumpY = transform.position.y;
+            //m_controller2D.SetVerticalVelocity(5);
             m_controller2D.SetVerticalVelocity(m_jumpVelocity);
             m_soundBank.PlayJumpSFX();
+            //m_isJumping = true;
+            m_coyoteTimer = 0;
         }
+
+        // if (Input.GetKey(KeyCode.Space) && m_isJumping)
+        // {
+        //     if (transform.position.y >= m_lastJumpY + m_jumpHeight)
+        //     {
+        //         m_isJumping = false;
+        //         m_controller2D.SetVerticalVelocity(0);
+        //         return;
+        //     }
+        //     m_controller2D.AddVerticalVelocity(m_jumpAcceleration);
+        // }
 
         UpdateAnimator();
     }

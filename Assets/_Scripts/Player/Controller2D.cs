@@ -15,6 +15,7 @@ public class Controller2D : MonoBehaviour
     private bool m_isClimbing;
     private float m_horizontalRaySpacing;
     private float m_verticalRaySpacing;
+    private float m_lastGround;
     
     [Serializable]
     private struct RaycastOrigins
@@ -47,6 +48,8 @@ public class Controller2D : MonoBehaviour
     
     public Vector2 Velocity => m_velocity;
 
+    public float LastGroundY => m_lastGround;
+
     private void Start()
     {
         m_collider2D = GetComponent<BoxCollider2D>();
@@ -69,6 +72,7 @@ public class Controller2D : MonoBehaviour
         Move(m_velocity * Time.deltaTime);
         if (m_gravityActive  && (m_collisionInfo.CollideBelow || m_collisionInfo.CollideAbove))
         {
+            m_lastGround = transform.position.y;
             m_velocity.y = 0;
         }
 
@@ -177,6 +181,11 @@ public class Controller2D : MonoBehaviour
     public void SetVerticalVelocity(float value)
     {
         m_velocity.y = value;
+    }
+
+    public void AddVerticalVelocity(float value)
+    {
+        m_velocity.y += value;
     }
 
     public void SetVelocity(Vector2 vec)
