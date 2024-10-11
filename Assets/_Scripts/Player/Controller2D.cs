@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 
-public class Controller2D : MonoBehaviour
+namespace SGGames.Scripts.Core
+{
+    public class Controller2D : MonoBehaviour
 {
     private const float m_skinWidth = .015f;
     [SerializeField] private float m_gravity;
@@ -215,3 +217,5 @@ public class Controller2D : MonoBehaviour
         m_isFreeze = false;
     }
 }
+}
+

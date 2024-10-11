@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.Player;
 using SGGames.Scripts.ScriptableEvent;
 using UnityEngine;
 

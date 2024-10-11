@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Player;
 using UnityEngine;
 
 public class LaserColumn : MonoBehaviour

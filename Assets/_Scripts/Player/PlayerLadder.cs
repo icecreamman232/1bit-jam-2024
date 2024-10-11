@@ -1,126 +1,131 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 
-public class PlayerLadder : MonoBehaviour
+namespace SGGames.Scripts.Player
 {
-    private CameraFollowing m_cameraFollowing;
-    [SerializeField] private float m_climbingVelocity;
-
-    private PlayerHealth m_health;
-    private Animator m_animator;
-    private Controller2D m_controller2D;
-    private Ladder m_currentLadder;
-    private bool m_isEnterFromBot;
-    private bool m_isClimbing;
-
-    private int m_OnLadderAnimParam = Animator.StringToHash("OnLadder");
-    private int m_IsClimbingAnimParam = Animator.StringToHash("Climbing");
-
-    private void Start()
+    public class PlayerLadder : PlayerBehavior
     {
-        m_health = GetComponent<PlayerHealth>();
-        m_controller2D = GetComponent<Controller2D>();
-        m_animator = GetComponentInChildren<Animator>();
-        m_cameraFollowing = Camera.main.GetComponent<CameraFollowing>();
-        m_health.OnDeath += HandleClimbingOnDead;
-    }
+        private CameraFollowing m_cameraFollowing;
+        [SerializeField] private float m_climbingVelocity;
 
-    private void OnDestroy()
-    {
-        m_health.OnDeath -= HandleClimbingOnDead;
-    }
+        private PlayerHealth m_health;
+        private Animator m_animator;
+        private Controller2D m_controller2D;
+        private Ladder m_currentLadder;
+        private bool m_isEnterFromBot;
+        private bool m_isClimbing;
 
-    private void HandleClimbingOnDead()
-    {
-        m_currentLadder = null;
-    }
+        private int m_OnLadderAnimParam = Animator.StringToHash("OnLadder");
+        private int m_IsClimbingAnimParam = Animator.StringToHash("Climbing");
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Interact")
-            && other.CompareTag("Interact/Ladder"))
+        protected override void Start()
         {
-            AttachToLadder(other.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (m_currentLadder!=null &&  other.gameObject == m_currentLadder.gameObject)
-        {
-            DetachFromLadder();
-        }
-    }
-
-    private void Update()
-    {
-        if(m_currentLadder == null) return;
-        m_isClimbing = false;
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            m_controller2D.SetVerticalVelocity(m_climbingVelocity);
-            m_isEnterFromBot = true;
-            m_isClimbing = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            m_controller2D.SetVerticalVelocity(-m_climbingVelocity);
-            m_isEnterFromBot = false;
-            m_isClimbing = true;
+            m_health = GetComponent<PlayerHealth>();
+            m_controller2D = GetComponent<Controller2D>();
+            m_animator = GetComponentInChildren<Animator>();
+            m_cameraFollowing = Camera.main.GetComponent<CameraFollowing>();
+            m_health.OnDeath += HandleClimbingOnDead;
+            base.Start();
         }
 
-        if (m_controller2D.Velocity.y != 0 && m_currentLadder!= null
-            && m_isClimbing)
+        private void OnDestroy()
         {
-            m_animator.SetBool(m_OnLadderAnimParam,true);
+            m_health.OnDeath -= HandleClimbingOnDead;
         }
 
-        //Snap player to edge position upon exiting ladder from top
-        if (m_controller2D.Velocity.y != 0 && m_isEnterFromBot)
+        private void HandleClimbingOnDead()
         {
-            var playerHeadPos = transform.position + Vector3.up;
-            if (playerHeadPos.y >= m_currentLadder.TopPoint.position.y)
+            m_currentLadder = null;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Interact")
+                && other.CompareTag("Interact/Ladder"))
             {
-                m_animator.SetBool(m_OnLadderAnimParam,false);
-                transform.position = m_controller2D.Velocity.x < 0
-                    ? m_currentLadder.LeftPoint.position
-                    : m_currentLadder.RightPoint.position;
-                m_cameraFollowing.ResetSmoothValue();
-                //Player is near the top
+                AttachToLadder(other.gameObject);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (m_currentLadder!=null &&  other.gameObject == m_currentLadder.gameObject)
+            {
                 DetachFromLadder();
             }
         }
 
-        UpdateAnimator();
-    }
-
-    private void AttachToLadder(GameObject ladder)
-    {
-        m_currentLadder = ladder.GetComponent<Ladder>();
-        m_controller2D.SetGravityActive(false);
-        m_controller2D.SetClimbing(true);
-        
-        //Determine enter direction
-        if (transform.position.y <= m_currentLadder.transform.position.y)
+        private void Update()
         {
-            m_isEnterFromBot = true;
+            if(m_currentLadder == null) return;
+            m_isClimbing = false;
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                m_controller2D.SetVerticalVelocity(m_climbingVelocity);
+                m_isEnterFromBot = true;
+                m_isClimbing = true;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                m_controller2D.SetVerticalVelocity(-m_climbingVelocity);
+                m_isEnterFromBot = false;
+                m_isClimbing = true;
+            }
+
+            if (m_controller2D.Velocity.y != 0 && m_currentLadder!= null
+                && m_isClimbing)
+            {
+                m_animator.SetBool(m_OnLadderAnimParam,true);
+            }
+
+            //Snap player to edge position upon exiting ladder from top
+            if (m_controller2D.Velocity.y != 0 && m_isEnterFromBot)
+            {
+                var playerHeadPos = transform.position + Vector3.up;
+                if (playerHeadPos.y >= m_currentLadder.TopPoint.position.y)
+                {
+                    m_animator.SetBool(m_OnLadderAnimParam,false);
+                    transform.position = m_controller2D.Velocity.x < 0
+                        ? m_currentLadder.LeftPoint.position
+                        : m_currentLadder.RightPoint.position;
+                    m_cameraFollowing.ResetSmoothValue();
+                    //Player is near the top
+                    DetachFromLadder();
+                }
+            }
+
+            UpdateAnimator();
         }
-        else
+
+        private void AttachToLadder(GameObject ladder)
         {
-            m_isEnterFromBot = false;
+            m_currentLadder = ladder.GetComponent<Ladder>();
+            m_controller2D.SetGravityActive(false);
+            m_controller2D.SetClimbing(true);
+            
+            //Determine enter direction
+            if (transform.position.y <= m_currentLadder.transform.position.y)
+            {
+                m_isEnterFromBot = true;
+            }
+            else
+            {
+                m_isEnterFromBot = false;
+            }
         }
-    }
 
-    private void DetachFromLadder()
-    {
-        m_currentLadder = null;
-        m_controller2D.SetGravityActive(true);
-        m_controller2D.SetClimbing(false);
-        m_animator.SetBool(m_OnLadderAnimParam,false);
-    }
+        private void DetachFromLadder()
+        {
+            m_currentLadder = null;
+            m_controller2D.SetGravityActive(true);
+            m_controller2D.SetClimbing(false);
+            m_animator.SetBool(m_OnLadderAnimParam,false);
+        }
 
-    private void UpdateAnimator()
-    {
-        m_animator.SetBool(m_IsClimbingAnimParam,m_controller2D.Velocity.y != 0 && m_isClimbing);
+        private void UpdateAnimator()
+        {
+            m_animator.SetBool(m_IsClimbingAnimParam,m_controller2D.Velocity.y != 0 && m_isClimbing);
+        }
     }
 }

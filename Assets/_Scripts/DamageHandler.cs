@@ -1,5 +1,7 @@
 using System;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.Player;
 using UnityEngine;
 
 public class DamageHandler : MonoBehaviour
