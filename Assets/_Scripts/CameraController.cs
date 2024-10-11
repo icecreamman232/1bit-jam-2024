@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using Random = UnityEngine.Random;
 
-public class CameraController : Singleton<CameraController>
+public class CameraController : MonoBehaviour
 {
     [Header("Zoom")]
     [SerializeField] private Vector2 m_zoomInValue;
