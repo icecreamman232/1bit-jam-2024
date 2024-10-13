@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1574619694511572607}
   - component: {fileID: 5537300856589587874}
   - component: {fileID: 5693025489902995108}
-  - component: {fileID: 3004170960111871235}
+  - component: {fileID: 2591334225363630596}
   - component: {fileID: 8656560589674080709}
   m_Layer: 7
   m_Name: BreakableWall
@@ -321,7 +321,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3004170960111871235
+--- !u!114 &2591334225363630596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,13 +330,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3562564693008187244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea95c822486eb7741b65829fd1b9bc9a, type: 3}
+  m_Script: {fileID: 11500000, guid: d6210f020e0817e4ca24a7eb570c9c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHealth: 2
   m_currentHealth: 2
   m_noDamage: 0
   m_delayBeforeDestroy: 0.2
+  m_brokenSprite: {fileID: 411565850, guid: e5bfc67da4da4304eb9c1b1cc9bed08a, type: 3}
 --- !u!114 &8656560589674080709
 MonoBehaviour:
   m_ObjectHideFlags: 0
