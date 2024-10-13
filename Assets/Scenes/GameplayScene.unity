@@ -1433,9 +1433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cameraTransform: {fileID: 519420032}
   m_targetTransform: {fileID: 0}
-  m_followingSpeed: 70
+  m_followingSpeed: 100
   m_aheadDistanceX: 4
-  m_smoothTime: 1
+  m_smoothTime: 0.7
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
