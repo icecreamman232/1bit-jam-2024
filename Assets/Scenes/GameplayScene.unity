@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_targetTransform: {fileID: 0}
   m_followingSpeed: 70
   m_aheadDistanceX: 4
-  m_smoothTime: 0.06
+  m_smoothTime: 0.08
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0

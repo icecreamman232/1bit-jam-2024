@@ -78,10 +78,10 @@ namespace SGGames.Scripts.Core
             m_velocity.y = 0;
         }
 
-        if (m_isClimbing)
-        {
-            m_velocity.y = 0;
-        }
+        // if (m_isClimbing)
+        // {
+        //     m_velocity.y = 0;
+        // }
     }
 
     private void UpdateRaycastOrigins()

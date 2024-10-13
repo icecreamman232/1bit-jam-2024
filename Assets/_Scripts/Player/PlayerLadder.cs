@@ -60,6 +60,8 @@ namespace SGGames.Scripts.Player
         {
             if(m_currentLadder == null) return;
             m_isClimbing = false;
+            m_controller2D.SetVerticalVelocity(0);
+            
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 m_controller2D.SetVerticalVelocity(m_climbingVelocity);
