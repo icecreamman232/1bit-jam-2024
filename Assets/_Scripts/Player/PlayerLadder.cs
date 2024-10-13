@@ -138,7 +138,6 @@ namespace SGGames.Scripts.Player
 
         private void DetachFromLadder()
         {
-            Debug.Log("Detach ladder");
             m_currentLadder.gameObject.layer = LayerMask.NameToLayer("Interact");
             m_currentLadder = null;
             m_controller2D.SetGravityActive(true);
