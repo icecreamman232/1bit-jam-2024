@@ -11,6 +11,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private ActionEvent m_playerDeadEvent;
     [SerializeField] private TriggerZone m_leftTriggerZone;
     [SerializeField] private TriggerZone m_rightTriggerZone;
+    
+    [SerializeField] private TriggerZone m_leftDoorClosedTriggerZone;
+    [SerializeField] private TriggerZone m_rightDoorClosedTriggerZone;
     [SerializeField] private FinalLadder m_finalLadder;
     
     private Health m_health;
@@ -33,6 +36,8 @@ public class BossController : MonoBehaviour
             m_phase2.StopPhase();
         }
         
+        m_leftDoorClosedTriggerZone.ResetTriggerZone();
+        m_rightDoorClosedTriggerZone.ResetTriggerZone();
         m_leftTriggerZone.ResetTriggerZone();
         m_rightTriggerZone.ResetTriggerZone();
         
@@ -84,12 +89,18 @@ public class BossController : MonoBehaviour
     {
         SoundManager.Instance.PlayBossBGM();
         m_phase1.EnterPhase(true);
+
+        m_leftDoorClosedTriggerZone.SetTriggerOnce();
+        m_rightDoorClosedTriggerZone.SetTriggerOnce();
     }
     
     public void StartFightFromRight()
     {
         SoundManager.Instance.PlayBossBGM();
         m_phase1.EnterPhase(false);
+        
+        m_leftDoorClosedTriggerZone.SetTriggerOnce();
+        m_rightDoorClosedTriggerZone.SetTriggerOnce();
     }
 
     public void SwitchToPhase2()

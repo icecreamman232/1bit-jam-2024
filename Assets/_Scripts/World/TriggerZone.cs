@@ -16,6 +16,11 @@ public class TriggerZone : MonoBehaviour
     {
         m_hasTrigger = false;
     }
+
+    public void SetTriggerOnce()
+    {
+        m_hasTrigger = true;
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {

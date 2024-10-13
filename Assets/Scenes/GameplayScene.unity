@@ -873,6 +873,8 @@ MonoBehaviour:
   m_playerDeadEvent: {fileID: 11400000, guid: 062c3b00aee614546b012503056bab9f, type: 2}
   m_leftTriggerZone: {fileID: 28776681}
   m_rightTriggerZone: {fileID: 88904300}
+  m_leftDoorClosedTriggerZone: {fileID: 279676767}
+  m_rightDoorClosedTriggerZone: {fileID: 1504228898}
   m_finalLadder: {fileID: 404000634}
 --- !u!1 &279676766
 GameObject:
@@ -3713,7 +3715,7 @@ MonoBehaviour:
   m_collectedKeyNumber: 0
   m_collectKeyEvent: {fileID: 11400000, guid: d612354fd3d85aa4cacd5fd9c4a37bc0, type: 2}
   m_curCheckPtsIndex: 0
-  m_debugMode: 0
+  m_debugMode: 1
   m_debugTransform: {fileID: 1730659065}
   m_checkPoint:
   - {fileID: 546583597}
