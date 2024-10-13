@@ -49,7 +49,7 @@ namespace SGGames.Scripts.Managers
             m_targetPos.z = -10;
             
             //Smooth camera movement
-            m_cameraSmoothVelocity = Vector3.zero;
+            //m_cameraSmoothVelocity = Vector3.zero;
             m_cameraTransform.position = Vector3.SmoothDamp(m_cameraTransform.position, m_targetPos, ref m_cameraSmoothVelocity,m_smoothTime);
         }
 
