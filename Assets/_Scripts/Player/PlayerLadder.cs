@@ -15,6 +15,7 @@ namespace SGGames.Scripts.Player
         private Ladder m_currentLadder;
         private bool m_isEnterFromBot;
         private bool m_isClimbing;
+        public bool IsOnLadder => m_currentLadder != null;
 
         private int m_OnLadderAnimParam = Animator.StringToHash("OnLadder");
         private int m_IsClimbingAnimParam = Animator.StringToHash("Climbing");
@@ -44,7 +45,24 @@ namespace SGGames.Scripts.Player
             if (other.gameObject.layer == LayerMask.NameToLayer("Interact")
                 && other.CompareTag("Interact/Ladder"))
             {
-                AttachToLadder(other.gameObject);
+                //Player was standing on ladder but didnt move or they just jump on ladder,
+                //we disable gravity to keep them there
+                if (m_controller2D.IsGrounded)
+                {
+                    m_controller2D.SetGravityActive(false);
+                }
+                m_controller2D.SetVerticalVelocity(0);
+                m_currentLadder = other.GetComponent<Ladder>();
+                //Determine enter direction
+                if (transform.position.y <= m_currentLadder.transform.position.y)
+                {
+                    m_isEnterFromBot = true;
+                }
+                else
+                {
+                    m_isEnterFromBot = false;
+                }
+               
             }
         }
 
@@ -60,7 +78,6 @@ namespace SGGames.Scripts.Player
         {
             if(m_currentLadder == null) return;
             m_isClimbing = false;
-            m_controller2D.SetVerticalVelocity(0);
             
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -78,6 +95,8 @@ namespace SGGames.Scripts.Player
             if (m_controller2D.Velocity.y != 0 && m_currentLadder!= null
                 && m_isClimbing)
             {
+                m_controller2D.SetGravityActive(false);
+                m_currentLadder.gameObject.layer = LayerMask.NameToLayer("Default");
                 m_animator.SetBool(m_OnLadderAnimParam,true);
             }
 
@@ -119,6 +138,8 @@ namespace SGGames.Scripts.Player
 
         private void DetachFromLadder()
         {
+            Debug.Log("Detach ladder");
+            m_currentLadder.gameObject.layer = LayerMask.NameToLayer("Interact");
             m_currentLadder = null;
             m_controller2D.SetGravityActive(true);
             m_controller2D.SetClimbing(false);

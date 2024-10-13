@@ -18,6 +18,7 @@ namespace SGGames.Scripts.Core
     private float m_horizontalRaySpacing;
     private float m_verticalRaySpacing;
     private float m_lastGround;
+    private bool m_isGrounded;
     
     [Serializable]
     private struct RaycastOrigins
@@ -46,6 +47,7 @@ namespace SGGames.Scripts.Core
     public float Gravity => m_gravity;
 
     public bool IsGravityActive => m_gravityActive;
+    public bool IsGrounded => m_isGrounded;
     public CollisionInfo CollisionInfos => m_collisionInfo;
     
     public Vector2 Velocity => m_velocity;
@@ -77,11 +79,6 @@ namespace SGGames.Scripts.Core
             m_lastGround = transform.position.y;
             m_velocity.y = 0;
         }
-
-        // if (m_isClimbing)
-        // {
-        //     m_velocity.y = 0;
-        // }
     }
 
     private void UpdateRaycastOrigins()
@@ -112,7 +109,8 @@ namespace SGGames.Scripts.Core
         float directionY = Mathf.Sign(velocity.y);
         float rayLength = Mathf.Abs(velocity.y) + m_skinWidth;
         
-        
+        //Add interact to block mask
+        m_obstacleMask |= 1 << LayerMask.NameToLayer("Interact");
         for (int i = 0; i < m_verticalRayCount; i++)
         {
             Vector2 rayOrigin = directionY == -1 ? m_raycastOrigins.BotLeft : m_raycastOrigins.TopLeft;
@@ -127,9 +125,12 @@ namespace SGGames.Scripts.Core
                 rayLength = hit2D.distance;
                 
                 m_collisionInfo.CollideBelow = directionY == -1;
+                m_isGrounded = m_collisionInfo.CollideBelow;
                 m_collisionInfo.CollideAbove = directionY == 1;
             }
         }
+        //Remove interact from block mask
+        m_obstacleMask &= ~(1 << LayerMask.NameToLayer("Interact"));
     }
     
     private void HorizontalCollision(ref Vector2 velocity)
